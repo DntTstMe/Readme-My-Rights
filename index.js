@@ -9,13 +9,13 @@ const inquirer = require('inquirer');
 const questions = [{
     type: 'input',
     name: 'title',
-    message: 'Enter the title of your project: (Required)',
+    message: 'Enter the title of your project: ',
     //validate to make sure there is a value there
     validate: nameInput => {
       if (nameInput) {
         return true;
       } else {
-        console.log('Please enter your title.');
+        console.log('Please enter your title: ');
         return false;
       }
     }
@@ -23,12 +23,12 @@ const questions = [{
   {
     type: 'input',
     name: 'description',
-    message: 'Enter a brief description of your project: (Required)',
+    message: 'Enter a brief description of your project: ',
     validate: nameInput => {
       if (nameInput) {
         return true;
       } else {
-        console.log('Please enter a description.');
+        console.log('Please enter a description: ');
         return false;
       }
     }
@@ -36,12 +36,12 @@ const questions = [{
   {
     type: 'input',
     name: 'installation',
-    message: 'Enter installation instructions.',
+    message: 'Enter installation instructions: ',
   },
   { 
     type: 'input',
     name: 'instructions',
-    message: 'Enter usage instructions',   
+    message: 'Enter usage instructions: ',   
   },
   {
     type: 'input',
@@ -53,15 +53,11 @@ const questions = [{
     name: 'test',
     message: 'Enter test instructions: '
   },
-  { 
-    type: 'checkbox',
+  {
+    type: 'list',
     name: 'license',
-    message: 'Please choose a license.',
-    choices: ['MIT License',
-    'Apache License 2.0',
-    'GNU GPLv3',
-    'ISC License',
-    'None'],
+    message: 'Please choose a license: ',
+    choices: ['MIT License', 'Apache License 2.0', 'GNU GPLv3', 'ISC License', 'None'],
     validate: nameInput => {
       if (nameInput) {
         return true;
@@ -98,7 +94,6 @@ const questions = [{
     }
   }, 
 ];
-
 // Object containing descriptions for each license a user may select
 const licenseExplanations = {
     'MIT License': 'A permissive license that allows users to do almost anything with the code as long as they provide attribution back to the author and don’t hold the author liable. This license is widely used for its simplicity and permissiveness.',
@@ -107,7 +102,6 @@ const licenseExplanations = {
     'ISC License': 'The ISC License simply removes language that would be considered extraneous according to the Berne Convention. The ISC License is considered equivalent to the Simplified (2-Clause) BSD License but with more concise language.',
     'None': 'No license has been chosen for this project',
 };
-
 // Function to get the URL for the license badge
 function getLicenseBadgeURL(license) {
     return `https://img.shields.io/badge/license-${encodeURIComponent(license)}-brightgreen`;
