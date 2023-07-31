@@ -156,3 +156,22 @@ For any questions or concerns, please reach out to me through the following cont
 - Email: ${answers.email}
 `;
 }
+// Function to write the generated README.md content to a file
+async function writeToFile(fileName, data) {
+    await fs.writeFile(fileName, data);
+    console.log('README.md created successfully');
+  }
+  
+  // Function to prompt the user for information and generate the README.md file
+  async function promptUser() {
+    try {
+      console.log('Welcome to the Project README Generator!');
+      const answers = await inquirer.prompt(questions);
+      const readmeContent = await generateReadme(answers);
+      await writeToFile('README.md', readmeContent);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  // Call the promptUser function to start the application
+  promptUser();
