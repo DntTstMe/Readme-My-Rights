@@ -112,3 +112,47 @@ const licenseExplanations = {
 function getLicenseBadgeURL(license) {
     return `https://img.shields.io/badge/license-${encodeURIComponent(license)}-brightgreen`;
 }
+// Function to generate the content for the README.md file
+async function generateReadme(answers) {
+    const licenseBadgeURL = getLicenseBadgeURL(answers.license);
+    const licenseExplanation = licenseExplanations[answers.license];
+
+  return `
+
+# ${answers.title}
+
+## License
+![License](${licenseBadgeURL})
+
+${licenseExplanation}
+
+## Description
+${answers.description}
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#instructions)
+- [License](#license)
+- [Contributing](#contribution)
+- [Tests](#test)
+- [Questions](#questions)
+
+## Installation
+${answers.installation}
+
+## Usage
+${answers.instructions}
+
+## Contributing
+${answers.contribution}
+
+## Tests
+${answers.test}
+
+## Questions
+For any questions or concerns, please reach out to me through the following contact information:
+
+- Github: [${answers.userName}](https://github.com/${answers.userName})
+- Email: ${answers.email}
+`;
+}
