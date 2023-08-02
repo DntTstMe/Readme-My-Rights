@@ -1,6 +1,6 @@
 
 
-# Project Title
+# Readme-My-Rights
 
 ## License
 ![License](https://img.shields.io/badge/license-MIT%20License-brightgreen)
